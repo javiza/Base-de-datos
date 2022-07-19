@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-tarea-individual',
@@ -7,11 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TareaIndividualComponent implements OnInit {
   @Input()
-  tareainfo: any;
+  tareaInfo: any;
 
-  constructor() { }
+  constructor( private http:HttpClient) { }
 
   ngOnInit(): void {
   }
-
+  borrarRegistro(tareaInfo): void {
+    this.http.delete('http://localhost:3009/api/lista/' + tareaInfo._id).subscribe((res) => {
+      console.log("Registro borrado");
+    })
+  }
 }
