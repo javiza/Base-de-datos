@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient} from '@angular/common/http';
+
 
 
 @Component({
@@ -11,13 +13,17 @@ export class TareaIndividualComponent implements OnInit {
   @Input()
   tareaInfo: any;
 
-  constructor( private http:HttpClient) { }
+  @Output()
+  cambioTarea : EventEmitter<number> = new EventEmitter();
+
+  constructor( private http: HttpClient) { }
 
   ngOnInit(): void {
   }
+
   borrarRegistro(tareaInfo): void {
-    this.http.delete('http://localhost:3009/api/lista/' + tareaInfo._id).subscribe((res) => {
-      console.log("Registro borrado");
-    })
+    this.http.delete('http://localhost:3009/api/lista/' + tareaInfo._id).subscribe((respuesta) =>
+      this.cambioTarea.emit()
+    )
   }
 }

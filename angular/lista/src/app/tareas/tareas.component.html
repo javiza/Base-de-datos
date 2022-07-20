@@ -1,6 +1,10 @@
 <ul class="list-unstyled">
   <li *ngFor="let item of tareas">
-    <app-tarea-individual [tareaInfo]="item" ></app-tarea-individual>
+    <app-tarea-individual [tareaInfo]="item" (cambioTarea)="actualizar()"></app-tarea-individual>
 
   </li>
 </ul>
+<input type="text">
+
+<button (click)="crearRegistro()">BORRAR</button>
+
