@@ -1,7 +1,7 @@
 li{
   font-size: 20px;
   padding: 10px;
-  color: #fff;
+  color: grey;
 }
 li:nth-child(1){
   background-color: #000410;
